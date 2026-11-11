@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+
+    <style>
+        :root {
+            --bg: #f5eee6;
+            --surface: #fffaf5;
+            --primary: #795548;
+            --primary-dark: #5c4033;
+            --accent: #a47148;
+            --border: #d8c8b8;
+            --text: #46352c;
+            --hover: #eee0d1;
+            --shadow: 0 8px 25px rgba(92, 64, 51, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            text-align: center;
+            margin: 0;
+            padding: 105px 15px 30px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 75px;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 9999;
+        }
+
+        .logo {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 24px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links > a,
+        .dropbtn {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 16px;
+            font-family: inherit;
+            background: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-links > a:hover,
+        .dropbtn:hover {
+            color: var(--accent);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            padding: 10px 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 210px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: left;
+            z-index: 10000;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--hover);
+        }
+
+        /* PAGE */
+        h1 {
+            color: var(--primary-dark);
+            margin: 20px 0;
+        }
+
+        .slider {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 15px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        #slideImage {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .buttons button:hover {
+            background: var(--primary-dark);
+        }
+
+        #counter {
+            color: var(--text);
+            margin-top: 15px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+            body {
+                padding-top: 145px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 12px 5%;
+            }
+
+            .nav-links {
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 12px 18px;
+            }
+
+            .dropdown-content {
+                left: 0;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #slideImage {
+                height: 250px;
+            }
+
+            .buttons button {
+                padding: 10px 18px;
+            }
+
+            .slider {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">My Portfolio</a>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#about">About</a>
+
+            <div class="dropdown">
+                <button
+                    type="button"
+                    class="dropbtn"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                >
+                    Projects ▾
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="../project1/para.html">Project 1 - Paragraph</a>
+                    <a href="../project2/colorpicker.html">Project 2 - Color Picker</a>
+                    <a href="../project3/clock.html">Project 3 - Digital Clock</a>
+                    <a href="../project4/calculator.html">Project 4 - Calculator</a>
+                    <a href="../project5/api.html">Project 5 - API Fetch</a>
+                    <a href="../project6/timer.html">Project 6 - Timer</a>
+                    <a href="../project7/signal.html">Project 7 - Traffic Signal</a>
+                    <a href="../project8/registrationform.html">Project 8 - Registration Form</a>
+                    <a href="../project9/imageslider.html">Project 9 - Image Slider</a>
+                    <a href="../project10/todo.html">Project 10 - To-Do List</a>
+                </div>
+            </div>
+
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <h1>Image Slider</h1>
+
+    <div class="slider">
+        <img
+            id="slideImage"
+            src="../assets/image1.jpg"
+            alt="Nature image 1"
+        >
+
+        <div class="buttons">
+            <button id="previous" type="button">Previous</button>
+            <button id="next" type="button">Next</button>
+        </div>
+
+        <p id="counter">Image 1 of 3</p>
+    </div>
+
+    <script>
+        // PROJECTS DROPDOWN
+        const dropdown = document.querySelector(".dropdown");
+        const dropButton = document.querySelector(".dropbtn");
+
+        dropButton.addEventListener("click", function (event) {
+            event.stopPropagation();
+
+            const isOpen = dropdown.classList.toggle("active");
+            dropButton.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+                dropButton.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                dropdown.classList.remove("active");
+                dropButton.setAttribute("aria-expanded", "false");
+                dropButton.focus();
+            }
+        });
+
+        // IMAGE SLIDER
+        const images = [
+            {
+                src: "../assets/image1.jpg",
+                alt: "Nature image 1"
+            },
+            {
+                src: "../assets/image2.webp",
+                alt: "Nature image 2"
+            },
+            {
+                src: "../assets/image3.jpg",
+                alt: "Nature image 3"
+            }
+        ];
+
+        const slideImage = document.getElementById("slideImage");
+        const counter = document.getElementById("counter");
+        const nextButton = document.getElementById("next");
+        const previousButton = document.getElementById("previous");
+
+        let currentIndex = 0;
+
+        function showImage() {
+            slideImage.src = images[currentIndex].src;
+            slideImage.alt = images[currentIndex].alt;
+
+            counter.textContent =
+                `Image ${currentIndex + 1} of ${images.length}`;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage();
+        }
+
+        function previousImage() {
+            currentIndex =
+                (currentIndex - 1 + images.length) % images.length;
+
+            showImage();
+        }
+
+        nextButton.addEventListener("click", nextImage);
+        previousButton.addEventListener("click", previousImage);
+
+        // Change the image automatically every 3 seconds.
+        setInterval(nextImage, 3000);
+
+        // Display the first image when the page loads.
+        showImage();
+    </script>
+
+</body>
+</html>

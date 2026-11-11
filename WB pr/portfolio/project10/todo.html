@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+
+    <style>
+        :root {
+            --bg: #f5eee6;
+            --surface: #fffaf5;
+            --primary: #795548;
+            --primary-dark: #5c4033;
+            --accent: #a47148;
+            --border: #d8c8b8;
+            --text: #46352c;
+            --hover: #eee0d1;
+            --shadow: 0 8px 25px rgba(92, 64, 51, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 105px 15px 30px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 75px;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 9999;
+        }
+
+        .logo {
+            color: var(--primary-dark);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links > a,
+        .dropbtn {
+            color: var(--primary-dark);
+            font-size: 16px;
+            font-family: inherit;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-links > a:hover,
+        .dropbtn:hover {
+            color: var(--accent);
+        }
+
+        /* PROJECTS DROPDOWN */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            padding: 10px 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 220px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: left;
+            z-index: 10000;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 15px;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--hover);
+        }
+
+        /* TO-DO CONTAINER */
+        .todo-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-dark);
+            margin-top: 0;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        #taskInput {
+            flex: 1;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: white;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        button {
+            border: none;
+            border-radius: 6px;
+            padding: 10px 14px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+        }
+
+        #addButton {
+            background: var(--primary);
+        }
+
+        #addButton:hover {
+            background: var(--primary-dark);
+        }
+
+        #taskList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px;
+            margin-bottom: 12px;
+            background: #fffdf9;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .task-checkbox {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .task-text {
+            flex: 1;
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .completed .task-text {
+            text-decoration: line-through;
+            color: #8a7b70;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .edit-button {
+            background: #a47148;
+        }
+
+        .edit-button:hover {
+            background: #895b37;
+        }
+
+        .delete-button {
+            background: #a94442;
+        }
+
+        .delete-button:hover {
+            background: #873532;
+        }
+
+        #status {
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+
+        /* MOBILE LAYOUT */
+        @media (max-width: 700px) {
+            body {
+                padding-top: 145px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 12px 5%;
+            }
+
+            .nav-links {
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 12px 18px;
+            }
+
+            .dropdown-content {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .todo-container {
+                padding: 20px 15px;
+            }
+
+            .task-item {
+                flex-wrap: wrap;
+            }
+
+            .task-actions {
+                margin-left: auto;
+            }
+
+            .input-group {
+                gap: 7px;
+            }
+
+            #taskInput {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">My Portfolio</a>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#about">About</a>
+
+            <div class="dropdown">
+                <button
+                    type="button"
+                    class="dropbtn"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                >
+                    Projects ▾
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="../project1/para.html">Project 1 - Paragraph</a>
+                    <a href="../project2/colorpicker.html">Project 2 - Color Picker</a>
+                    <a href="../project3/clock.html">Project 3 - Digital Clock</a>
+                    <a href="../project4/calculator.html">Project 4 - Calculator</a>
+                    <a href="../project5/api.html">Project 5 - API Fetch</a>
+                    <a href="../project6/timer.html">Project 6 - Timer</a>
+                    <a href="../project7/signal.html">Project 7 - Traffic Signal</a>
+                    <a href="../project8/registrationform.html">Project 8 - Registration Form</a>
+                    <a href="../project9/imageslider.html">Project 9 - Image Slider</a>
+                    <a href="../project10/todo.html">Project 10 - To-Do List</a>
+                </div>
+            </div>
+
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- TO-DO LIST -->
+    <div class="todo-container">
+        <h1>My To-Do List</h1>
+
+        <form id="todoForm" class="input-group">
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter a task..."
+                maxlength="200"
+                aria-label="New task"
+                required
+            >
+
+            <button type="submit" id="addButton">Add</button>
+        </form>
+
+        <ul id="taskList"></ul>
+
+        <p id="status" role="status" aria-live="polite">
+            No tasks added yet.
+        </p>
+    </div>
+
+    <script>
+        // PROJECTS DROPDOWN
+        const dropdown = document.querySelector(".dropdown");
+        const dropButton = document.querySelector(".dropbtn");
+
+        dropButton.addEventListener("click", function (event) {
+            event.stopPropagation();
+
+            const isOpen = dropdown.classList.toggle("active");
+            dropButton.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+                dropButton.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                dropdown.classList.remove("active");
+                dropButton.setAttribute("aria-expanded", "false");
+                dropButton.focus();
+            }
+        });
+
+        // TO-DO LIST ELEMENTS
+        const todoForm = document.getElementById("todoForm");
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
+        const status = document.getElementById("status");
+
+        // LOCAL STORAGE: Load saved tasks or start with an empty list.
+        let tasks = JSON.parse(localStorage.getItem("portfolioTasks") || "[]");
+
+        // Save all tasks to localStorage.
+        function saveTasks() {
+            const taskData = Array.from(taskList.children).map(function (item) {
+                return {
+                    text: item.querySelector(".task-text").textContent,
+                    completed: item.querySelector(".task-checkbox").checked
+                };
+            });
+
+            localStorage.setItem("portfolioTasks", JSON.stringify(taskData));
+        }
+
+        function updateStatus() {
+            const totalTasks = taskList.children.length;
+            const completedTasks =
+                taskList.querySelectorAll(".task-checkbox:checked").length;
+
+            if (totalTasks === 0) {
+                status.textContent = "No tasks added yet.";
+            } else {
+                status.textContent =
+                    `${completedTasks} of ${totalTasks} tasks completed.`;
+            }
+        }
+
+        function createTask(taskText, isCompleted = false) {
+            const listItem = document.createElement("li");
+            listItem.className = "task-item";
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "task-checkbox";
+            checkbox.checked = isCompleted;
+            checkbox.setAttribute("aria-label", "Mark task completed");
+
+            const text = document.createElement("span");
+            text.className = "task-text";
+            text.textContent = taskText;
+
+            const actions = document.createElement("div");
+            actions.className = "task-actions";
+
+            const editButton = document.createElement("button");
+            editButton.type = "button";
+            editButton.className = "edit-button";
+            editButton.textContent = "Edit";
+
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "delete-button";
+            deleteButton.textContent = "Delete";
+
+            // Restore the completed style when loading saved tasks.
+            listItem.classList.toggle("completed", isCompleted);
+
+            checkbox.addEventListener("change", function () {
+                listItem.classList.toggle("completed", checkbox.checked);
+                saveTasks();
+                updateStatus();
+            });
+
+            editButton.addEventListener("click", function () {
+                const newText = prompt("Edit your task:", text.textContent);
+
+                if (newText === null) {
+                    return;
+                }
+
+                if (newText.trim() === "") {
+                    alert("Task cannot be empty.");
+                    return;
+                }
+
+                text.textContent = newText.trim();
+                saveTasks();
+            });
+
+            deleteButton.addEventListener("click", function () {
+                listItem.remove();
+                saveTasks();
+                updateStatus();
+            });
+
+            actions.append(editButton, deleteButton);
+            listItem.append(checkbox, text, actions);
+            taskList.appendChild(listItem);
+
+            updateStatus();
+        }
+
+        // Add a new task.
+        todoForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const taskText = taskInput.value.trim();
+
+            if (taskText === "") {
+                return;
+            }
+
+            createTask(taskText);
+            saveTasks();
+
+            taskInput.value = "";
+            taskInput.focus();
+        });
+
+        // Restore saved tasks when the page loads.
+        tasks.forEach(function (task) {
+            if (
+                task &&
+                typeof task.text === "string" &&
+                task.text.trim() !== ""
+            ) {
+                createTask(task.text, task.completed === true);
+            }
+        });
+
+        updateStatus();
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock | My Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #f5eee6;
+            --surface: #fffaf5;
+            --primary: #795548;
+            --primary-dark: #5c4033;
+            --accent: #a47148;
+            --border: #d8c8b8;
+            --text: #46352c;
+            --hover: #eee0d1;
+            --shadow: 0 8px 25px rgba(92, 64, 51, 0.12);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding-top: 75px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 75px;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 9999;
+        }
+
+        .logo {
+            color: var(--primary-dark);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links > a,
+        .dropbtn {
+            color: var(--primary-dark);
+            font-size: 16px;
+            font-family: inherit;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px 0;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links > a:hover,
+        .dropbtn:hover {
+            color: var(--accent);
+        }
+
+        /* PROJECTS DROPDOWN */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 210px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            z-index: 10000;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--hover);
+        }
+
+        /* CLOCK AREA */
+        .main-content {
+            min-height: calc(100vh - 75px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .clock-container {
+            width: min(100%, 650px);
+            padding: 45px 30px;
+            text-align: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .clock-container h1 {
+            color: var(--primary-dark);
+            font-size: clamp(28px, 5vw, 40px);
+            margin-bottom: 28px;
+        }
+
+        #time {
+            color: var(--primary);
+            font-size: clamp(36px, 8vw, 65px);
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-variant-numeric: tabular-nums;
+            overflow-wrap: anywhere;
+        }
+
+        #date {
+            color: var(--accent);
+            font-size: clamp(16px, 3vw, 21px);
+            line-height: 1.6;
+        }
+
+        /* MOBILE LAYOUT */
+        @media (max-width: 700px) {
+            body {
+                padding-top: 140px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 12px 5%;
+            }
+
+            .nav-links {
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 10px 18px;
+            }
+
+            .nav-links > a,
+            .dropbtn {
+                font-size: 14px;
+            }
+
+            .dropdown-content {
+                left: 0;
+                min-width: 190px;
+            }
+
+            .main-content {
+                min-height: calc(100vh - 140px);
+                padding: 25px 15px;
+            }
+
+            .clock-container {
+                padding: 35px 15px;
+            }
+
+            #time {
+                letter-spacing: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">My Portfolio</a>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#about">About</a>
+
+            <div class="dropdown">
+                <button
+                    type="button"
+                    class="dropbtn"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                >
+                    Projects ▾
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="../project1/para.html">Project 1</a>
+                    <a href="../project2/colorpicker.html">Color Picker</a>
+                    <a href="../project3/clock.html">Digital Clock</a>
+                    <a href="../project4/calculator.html">Calculator</a>
+                    <a href="../project5/api.html">API Fetch</a>
+                    <a href="../project6/timer.html">Timer</a>
+                    <a href="../project7/signal.html">Traffic Signal</a>
+                    <a href="../project8/registrationform.html">Registration Form</a>
+                    <a href="../project9/imageslider.html">Image Slider</a>
+                    <a href="../project10/todo.html">To-Do List</a>
+                </div>
+            </div>
+
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- DIGITAL CLOCK -->
+    <main class="main-content">
+        <div class="clock-container">
+            <h1>Digital Clock</h1>
+            <div id="time" aria-live="off">00:00:00 AM</div>
+            <div id="date"></div>
+        </div>
+    </main>
+
+    <script>
+        // Update the clock and date
+        function updateClock() {
+            const now = new Date();
+
+            const time = now.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+
+            const date = now.toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            });
+
+            document.getElementById("time").textContent = time;
+            document.getElementById("date").textContent = date;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Projects dropdown
+        const dropdown = document.querySelector(".dropdown");
+        const dropButton = document.querySelector(".dropbtn");
+
+        dropButton.addEventListener("click", function (event) {
+            event.stopPropagation();
+
+            const isOpen = dropdown.classList.toggle("active");
+            dropButton.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+                dropButton.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // Close dropdown with Escape key
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                dropdown.classList.remove("active");
+                dropButton.setAttribute("aria-expanded", "false");
+                dropButton.focus();
+            }
+        });
+    </script>
+
+</body>
+</html>

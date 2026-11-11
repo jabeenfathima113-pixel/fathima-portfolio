@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fathima-portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+    @import "tailwindcss";
+
+    body {
+      background-color: #b1a183;
+      color: #222222;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+/* PROJECT SECTION */
+.projects-section {
+  padding: 70px 24px;
+  color: #302b23;
+}
+
+.projects-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.projects-heading {
+  margin-bottom: 32px;
+}
+
+.projects-eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #6f6047;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.projects-heading h2 {
+  margin: 0;
+  color: #302b23;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.projects-heading p {
+  margin-top: 10px;
+  color: #5f574b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.projects-heading-line {
+  width: 55px;
+  height: 1px;
+  margin-top: 18px;
+  background: #8b7653;
+}
+
+/* Responsive grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Individual cards */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 225px;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid #d5c9b4;
+  border-radius: 12px;
+  background: #f8f5ee;
+  box-shadow: 0 3px 12px rgba(55, 43, 25, 0.06);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              background 0.25s ease;
+}
+
+.project-card-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #9b8968;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  background: #fcfaf5;
+  box-shadow: 0 10px 24px rgba(55, 43, 25, 0.12);
+}
+
+.project-card:hover .project-card-top {
+  transform: scaleX(1);
+}
+
+/* Icon and project number */
+.project-card-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.project-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #d9cbb4;
+  border-radius: 9px;
+  background: #e9e0d0;
+  color: #6f6047;
+  font-size: 16px;
+}
+
+.project-number {
+  color: #9b8968;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* Card text */
+.project-card h3 {
+  margin: 0 0 8px;
+  color: #302b23;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.project-card p {
+  margin: 0 0 22px;
+  color: #6b6255;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Project link */
+.project-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 13px;
+  border-top: 1px solid #e0d6c5;
+  color: #6f6047;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: #302b23;
+}
+
+.project-link i {
+  font-size: 11px;
+  transition: transform 0.2s ease;
+}
+
+.project-link:hover i {
+  transform: translateX(4px);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .projects-section {
+    padding: 50px 18px;
+  }
+
+  .projects-heading h2 {
+    font-size: 28px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .project-card {
+    min-height: 205px;
+    padding: 20px;
+  }
+}
+
+    </style>
+  </head>
+  body class="antialiased selection:bg-linen-accent selection:text-white">
+
+  <!-- NAVBAR -->
+  <header
+    class="fixed top-0 inset-x-0 z-50 bg-[#faf9f6]/90 backdrop-blur border-b border-linen-200">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-6 h-16">
+      <a href="#home"
+        class="text-lg font-serif font-bold text-linen-textDark tracking-tight">
+        Fathima <span class="text-linen-accent font-normal italic">Jabeen</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav
+        class="hidden md:flex items-center gap-6 text-xs font-medium text-linen-textMuted">
+        <a href="#home" class="hover:text-linen-accent transition">Home</a>
+        <a href="#about" class="hover:text-linen-accent transition">About</a>
+        <a href="#concepts"
+          class="hover:text-linen-accent transition">Concepts</a>
+        <a href="#projects"
+          class="hover:text-linen-accent transition">Projects</a>
+        <a href="#contact"
+          class="hover:text-linen-accent transition">Contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" aria-label="Toggle Menu"
+        class="md:hidden text-lg text-linen-textDark focus:outline-none">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-linen-100 border-b border-linen-200 px-6 py-3 space-y-2 text-xs font-medium">
+      <a href="#home" class="block py-1 hover:text-linen-accent">Home</a>
+      <a href="#about" class="block py-1 hover:text-linen-accent">About</a>
+      <a href="#concepts"
+        class="block py-1 hover:text-linen-accent">Concepts</a>
+      <a href="#projects"
+        class="block py-1 hover:text-linen-accent">Projects</a>
+      <a href="#contact" class="block py-1 hover:text-linen-accent">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-[85vh] flex items-center pt-20 pb-10 px-6">
+      <div
+        class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center w-full">
+        <div class="space-y-4">
+          <span
+            class="inline-block px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-linen-accent bg-linen-accent/10 rounded-full border border-linen-accent/20">
+            Portfolio
+          </span>
+          <h1
+            class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-linen-textDark leading-tight">
+            Hello, I'm <br /><span class="text-linen-accent italic">Fathima
+              Jabeen</span>
+          </h1>
+          <p
+            class="text-linen-textMuted text-xs sm:text-sm leading-relaxed max-w-md font-light">
+            A web developer focused on building clean, accessible, and
+            user-friendly digital experiences through balanced design and
+            organized code.
+          </p>
+          <div class="pt-1 flex flex-wrap gap-3">
+            <a href="#projects"
+              class="px-5 py-2 rounded-lg bg-linen-accent hover:bg-linen-accentHover text-black font-medium text-xs transition shadow-sm">
+              Explore Projects
+            </a>
+            <a href="#contact"
+              class="px-5 py-2 rounded-lg border border-linen-300 hover:bg-linen-200 text-linen-textDark font-medium text-xs transition">
+              Get in Touch
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile Picture[span_1](start_span)[span_1](end_span) -->
+        <div class="flex justify-center">
+          <div class="relative">
+            <div
+              class="absolute inset-0 rounded-full bg-linen-300/40 transform rotate-3 scale-105"></div>
+            <img src="/portfolio/assets/profile img.jpg" alt="Fathima  Jabeen
+            
+             Profile Picture"
+              class="relative w-52 h-52 sm:w-64 sm:h-64 rounded-full object-cover border-4 border-white shadow-md" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about"
+      class="py-14 px-6 bg-linen-200/50 border-t border-b border-linen-200">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl font-serif font-bold text-linen-textDark mb-4">About
+          Me</h2>
+        <div
+          class="space-y-3 text-linen-textMuted text-xs sm:text-sm leading-relaxed">
+          <p>
+            Welcome to my personal space! I am a dedicated frontend developer
+            with a passion for designing intuitive interfaces and creating
+            clean, functional web solutions.
+          </p>
+          <p>
+            My goal is to craft digital products that blend aesthetic simplicity
+            with seamless user experience. I focus on writing maintainable,
+            structured code while continuously refining my skills across
+            contemporary web technologies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPTS SECTION -->
+    <section id="concepts" class="py-16 px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-8 text-center sm:text-left">
+          <h2 class="text-2xl font-serif font-bold text-linen-textDark">Core
+            Concepts & Technologies</h2>
+          <p class="text-xs text-linen-textMuted mt-1">The essential tools,
+            standards, and frameworks I work with daily.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div
+            class="p-4 rounded-xl bg-white border border-linen-200 shadow-sm">
+            <div
+              class="w-8 h-8 rounded-lg bg-linen-accent/10 flex items-center justify-center text-linen-accent text-sm mb-3">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3
+              class="text-sm font-serif font-bold text-linen-textDark mb-1">Frontend
+              Fundamentals</h3>
+            <p class="text-[11px] text-linen-textMuted leading-relaxed">
+              HTML5 semantic structures, modern CSS3 styling, and JavaScript,
+              with emphasis on clean syntax and DOM manipulations.
+            </p>
+          </div>
+
+          <div
+            class="p-4 rounded-xl bg-white border border-linen-200 shadow-sm">
+            <div
+              class="w-8 h-8 rounded-lg bg-linen-accent/10 flex items-center justify-center text-linen-accent text-sm mb-3">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <h3
+              class="text-sm font-serif font-bold text-linen-textDark mb-1">Frameworks
+              & Libraries</h3>
+            <p class="text-[11px] text-linen-textMuted leading-relaxed">
+              Building dynamic component-driven user interfaces using React JS,
+              along with utility-first frameworks like Tailwind CSS and
+              Bootstrap.
+            </p>
+          </div>
+
+          <div
+            class="p-4 rounded-xl bg-white border border-linen-200 shadow-sm">
+            <div
+              class="w-8 h-8 rounded-lg bg-linen-accent/10 flex items-center justify-center text-linen-accent text-sm mb-3">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h3
+              class="text-sm font-serif font-bold text-linen-textDark mb-1">Responsive
+              Web Design</h3>
+            <p class="text-[11px] text-linen-textMuted leading-relaxed">
+              Ensuring applications render flawlessly across mobile, tablet, and
+              desktop viewports using flexible CSS grid and flexbox layouts.
+            </p>
+          </div>
+
+          <div
+            class="p-4 rounded-xl bg-white border border-linen-200 shadow-sm">
+            <div
+              class="w-8 h-8 rounded-lg bg-linen-accent/10 flex items-center justify-center text-linen-accent text-sm mb-3">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <h3
+              class="text-sm font-serif font-bold text-linen-textDark mb-1">API
+              Integration & Logic</h3>
+            <p class="text-[11px] text-linen-textMuted leading-relaxed">
+              Fetching asynchronous remote data using REST APIs, handling JSON
+              responses, and managing interactive application state.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+   <section id="projects" class="max-w-6xl mx-auto px-6 py-12">
+<!-- <hr class="border-0 solid-border-t-2 border-black mb-8"> -->
+<!-- PROJECTS SECTION -->
+<section id="projects" class="projects-section">
+  <div class="projects-container">
+
+    <div class="projects-heading">
+      <span class="projects-eyebrow">A few things I've built</span>
+      <h2>My Projects</h2>
+      <p>Small ideas, thoughtful details, and practical web experiments.</p>
+      <div class="projects-heading-line"></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-solid fa-align-left"></i></span>
+          <span class="project-number">01</span>
+        </div>
+        <h3>Dynamic Paragraph</h3>
+        <p>An interactive paragraph project.</p>
+        <a href="project1/para.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-solid fa-palette"></i></span>
+          <span class="project-number">02</span>
+        </div>
+        <h3>Color Picker</h3>
+        <p>Choose colors and explore color values.</p>
+        <a href="project2/colorpicker.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-regular fa-clock"></i></span>
+          <span class="project-number">03</span>
+        </div>
+        <h3>Digital Clock</h3>
+        <p>A simple digital clock interface.</p>
+        <a href="project3/clock.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-solid fa-calculator"></i></span>
+          <span class="project-number">04</span>
+        </div>
+        <h3>Calculator</h3>
+        <p>A calculator for everyday arithmetic.</p>
+        <a href="project4/calculator.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 5 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-solid fa-cloud-arrow-down"></i></span>
+          <span class="project-number">05</span>
+        </div>
+        <h3>API Data Fetcher</h3>
+        <p>Fetch and display data from an API.</p>
+        <a href="project5/api.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 6 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-solid fa-hourglass-half"></i></span>
+          <span class="project-number">06</span>
+        </div>
+        <h3>Timer</h3>
+        <p>A timer for tracking time intervals.</p>
+        <a href="project6/timer.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 7 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-solid fa-traffic-light"></i></span>
+          <span class="project-number">07</span>
+        </div>
+        <h3>Traffic Signal Simulator</h3>
+        <p>A visual simulation of traffic signal states.</p>
+        <a href="project7/signal.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 8 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-regular fa-rectangle-list"></i></span>
+          <span class="project-number">08</span>
+        </div>
+        <h3>Registration Form</h3>
+        <p>A form interface for collecting user details.</p>
+        <a href="project8/registrationform.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 9 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-solid fa-images"></i></span>
+          <span class="project-number">09</span>
+        </div>
+        <h3>Image Carousel</h3>
+        <p>Browse images in a carousel layout.</p>
+        <a href="project9/imageslider.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Project 10 -->
+      <article class="project-card">
+        <div class="project-card-top"></div>
+        <div class="project-card-meta">
+          <span class="project-icon"><i class="fa-solid fa-list-check"></i></span>
+          <span class="project-number">10</span>
+        </div>
+        <h3>To-Do List</h3>
+        <p>Organize tasks in a simple to-do list.</p>
+        <a href="project10/todo.html" class="project-link">
+          Explore project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* PROJECT SECTION */
+.projects-section {
+  padding: 70px 24px;
+  color: #302b23;
+}
+
+.projects-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.projects-heading {
+  margin-bottom: 32px;
+}
+
+.projects-eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #6f6047;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.projects-heading h2 {
+  margin: 0;
+  color: #302b23;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.projects-heading p {
+  margin-top: 10px;
+  color: #5f574b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.projects-heading-line {
+  width: 55px;
+  height: 1px;
+  margin-top: 18px;
+  background: #8b7653;
+}
+
+/* Responsive grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Individual cards */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 225px;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid #d5c9b4;
+  border-radius: 12px;
+  background: #f8f5ee;
+  box-shadow: 0 3px 12px rgba(55, 43, 25, 0.06);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              background 0.25s ease;
+}
+
+.project-card-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #9b8968;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  background: #fcfaf5;
+  box-shadow: 0 10px 24px rgba(55, 43, 25, 0.12);
+}
+
+.project-card:hover .project-card-top {
+  transform: scaleX(1);
+}
+
+/* Icon and project number */
+.project-card-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.project-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #d9cbb4;
+  border-radius: 9px;
+  background: #e9e0d0;
+  color: #6f6047;
+  font-size: 16px;
+}
+
+.project-number {
+  color: #9b8968;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* Card text */
+.project-card h3 {
+  margin: 0 0 8px;
+  color: #302b23;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.project-card p {
+  margin: 0 0 22px;
+  color: #6b6255;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Project link */
+.project-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 13px;
+  border-top: 1px solid #e0d6c5;
+  color: #6f6047;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: #302b23;
+}
+
+.project-link i {
+  font-size: 11px;
+  transition: transform 0.2s ease;
+}
+
+.project-link:hover i {
+  transform: translateX(4px);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .projects-section {
+    padding: 50px 18px;
+  }
+
+  .projects-heading h2 {
+    font-size: 28px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .project-card {
+    min-height: 205px;
+    padding: 20px;
+  }
+}
+</style>
+
+    <!-- COMMENTS SECTION -->
+    <section id="comments" class="py-14 px-6">
+      <div class="max-w-xl mx-auto bg-white border border-linen-200 rounded-xl p-5 sm:p-6 shadow-sm">
+        <h3 class="text-xl font-serif font-bold text-linen-textDark mb-1 text-center">Visitor Comments</h3>
+        <p class="text-[11px] text-linen-textMuted text-center mb-4">Leave your thoughts or feedback about my work!</p>
+
+        <form id="comment-form" onsubmit="handleComment(event)" class="space-y-2.5 mb-5">
+          <input type="text" id="c-name" required placeholder="Your Name" class="w-full bg-linen-100 border border-linen-200 rounded-lg px-3 py-1.5 text-xs text-linen-textDark focus:outline-none focus:border-linen-accent">
+          <textarea id="c-text" rows="2" required placeholder="Write your comment..." class="w-full bg-linen-100 border border-linen-200 rounded-lg px-3 py-1.5 text-xs text-linen-textDark focus:outline-none focus:border-linen-accent"></textarea>
+          <button type="submit" class="w-full py-1.5 bg-linen-accent hover:bg-linen-accentHover text-white rounded-lg text-xs font-medium transition">Post Comment</button>
+        </form>
+        <div class="border-t border-linen-200 pt-3">
+          </div>
+      
+      </div>
+    </section>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-14 px-6 bg-linen-200/50 border-t border-linen-200">
+      <div class="max-w-md mx-auto text-center">
+        <h2 class="text-2xl font-serif font-bold text-linen-textDark mb-1.5">Get In Touch</h2>
+        <p class="text-xs text-linen-textMuted mb-4">Have a project or question? Send an email anytime.</p>
+        <a href="mailto:fatima.jabeen@example.com" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-linen-200 text-linen-textDark text-xs hover:border-linen-accent transition shadow-sm">
+          <i class="fa-solid fa-envelope text-linen-accent"></i> fathimajabeen110@gmail.com
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-6 border-t border-linen-200 text-center text-xs text-linen-textMuted">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>&copy; <span id="year"></span> Fathima Jabeen. All rights reserved.</p>
+      
+  
+<!-- Social Links -->
+<div class="flex items-center gap-4 text-xs">
+    <span class="text-linen-textDark font-medium">
+        Connect with me:
+    </span>
+
+    <a
+        href="https://github.com/jabeenfathima113-pixel"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-linen-accent transition"
+    >
+        <i class="fa-brands fa-github"></i> GitHub
+    </a>
+
+    <a
+        href="https://www.linkedin.com/in/fathima-jabeen-87b833291/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-linen-accent transition"
+    >
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+    </a>
+
+    <a
+        href="mailto:fathimajabeen110@gmail.com"
+        class="hover:text-linen-accent transition"
+    >
+        <i class="fa-solid fa-envelope"></i> Email
+    </a>
+</div>
+        </body>
+      </html>
